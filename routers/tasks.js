@@ -6,21 +6,22 @@ const router = express.Router( {
 
 router.post( "/", async ( req, res, next ) => {
   try {
-    const [ id ] = await db( "projects" ).insert( req.body )
-    const task = await db( "projects" ).where( { id } ).first()
+    const [ id ] = await db( "tasks" ).insert( req.body )
+    const task = await db( "tasks" ).where( { id } ).first()
     res.status( 201 ).json( task )
   } catch ( err ) {
     next( err )
   }
+} )
 
   router.get("/", async ( req, res, next ) => {
     try {
-      res.json( await db( "projects" ) )
+      res.json( await db( "tasks" ) )
     } catch( err ) {
       next( err )
     }
-  })
 } )
+
 
 
 module.exports = router

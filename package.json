@@ -1,9 +1,9 @@
 {
   "private": true,
-	"scripts": {
-		"server": "nodemon index.js",
-		"start": "node index.js"
-	},
+  "scripts": {
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
   "devDependencies": {
     "nodemon": "^2.0.3"
   },

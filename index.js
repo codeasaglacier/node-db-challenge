@@ -11,8 +11,8 @@ server.use(helmet())
 server.use(express.json())
 
 server.use("/projects", projectsRouter)
-// server.use("/tasks", tasksRouter)
-// server.use("/resources", resourcesRouter)
+server.use("/tasks", tasksRouter)
+server.use("/resources", resourcesRouter)
 
 server.use((err, req, res, next) => {
 	console.log(err)

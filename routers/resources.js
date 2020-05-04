@@ -6,21 +6,24 @@ const router = express.Router( {
 
 router.post( "/", async ( req, res, next ) => {
   try {
-    const [ id ] = await db( "projects" ).insert( req.body )
-    const resource = await db( "projects" ).where( { id } ).first()
+    const [ id ] = await db( "resources" ).insert( req.body )
+    const resource = await db( "resources" ).where( { id } ).first()
     res.status( 201 ).json( resource )
   } catch ( err ) {
     next( err )
   }
+} )
 
   router.get("/", async ( req, res, next ) => {
     try {
-      res.json( await db( "projects" ) )
+      const resources = await db( "resources" )
+        .select( "resources.name" )
+       res.json( resources )
     } catch( err ) {
       next( err )
     }
-  })
 } )
+
 
 
 module.exports = router

@@ -12,6 +12,7 @@ router.post( "/", async ( req, res, next ) => {
   } catch ( err ) {
     next( err )
   }
+} )
 
 router.get("/", async ( req, res, next ) => {
     try {
@@ -21,12 +22,14 @@ router.get("/", async ( req, res, next ) => {
     } catch( err ) {
       next( err )
     }
-  })
-} )
+  } )
+
 
 router.get("/:id", async (req, res, next) => {
 	try {
-		res.json(req.user)
+    const { id } = req.params
+    const project = await db( "projects" ).where( { id } ).first()
+    res.json( project )
 	} catch(err) {
 		next(err)
 	}
